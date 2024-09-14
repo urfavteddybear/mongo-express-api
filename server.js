@@ -10,6 +10,13 @@ const categoryRoutes = require('./routes/categories');
 
 const app = express();
 
+app.use((req, res, next) => {
+    const now = new Date();
+    const logMessage = `${now.toISOString()} - ${req.method} ${req.originalUrl}`;
+    console.log(logMessage);
+    next(); // Proceed to the next middleware or route handler
+});
+
 // Middlewares
 app.use(bodyParser.json());
 
