@@ -10,6 +10,7 @@ const categoryRoutes = require('./src/routes/categories');
 
 const app = express();
 
+// Logging middleware
 app.use((req, res, next) => {
     const now = new Date();
     const logMessage = `${now.toISOString()} - ${req.method} ${req.originalUrl}`;
@@ -29,7 +30,10 @@ mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopol
   .then(() => console.log('MongoDB connected'))
   .catch((err) => console.error('MongoDB connection error:', err));
 
+// Define IP and port
 const port = process.env.PORT || 3000;
-app.listen(port, () => {
-  console.log(`Server running on port ${port}`);
+const host = process.env.HOST || '0.0.0.0'; // Specify the IP address
+
+app.listen(port, host, () => {
+  console.log(`Server running on http://${host}:${port}`);
 });
