@@ -1,0 +1,14 @@
+services:
+  mongo-express-api:
+    container_name: mongo-express-api
+    build:
+      context: .
+      target: mongo-express-api
+    ports:
+      - "3001:3001"
+    volumes:
+      - ./src:/app/src # Mount code directory
+    environment:
+      - PORT=3000 # Set your environment variables if needed
+      - MONGO_URI= # Set your environment variables if needed
+    restart: unless-stopped

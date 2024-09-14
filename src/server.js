@@ -5,8 +5,8 @@ const bodyParser = require('body-parser');
 
 dotenv.config();
 
-const bookRoutes = require('./routes/books');
-const categoryRoutes = require('./routes/categories');
+const bookRoutes = require('./src/routes/books');
+const categoryRoutes = require('./src/routes/categories');
 
 const app = express();
 
